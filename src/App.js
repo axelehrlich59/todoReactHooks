@@ -2,8 +2,8 @@ import { useState } from 'react';
 import './App.css';
 
 const App = () => {
+  const initialValue = ['Une todoList']
 
-  const initialValue = []
   const [value, setValue] = useState('')
   const [todo, setTodo] = useState(initialValue)
 
@@ -12,7 +12,7 @@ const App = () => {
   }
 
   const onclickSendValue = () => {
-    value.push(initialValue)
+    setTodo([...todo, value])
   }
 
 
@@ -27,12 +27,12 @@ const App = () => {
 
     <div className='main_main_container'>
       <div className='main_container_received'>
-        {todo.map((todoItem) => {
-          return <div key={todoItem} className='container_received'>{todoItem}</div>
-        })
-
-        }
-          
+        <div className='test'>
+          {todo.map((todoItem) => {
+            return <div key={todoItem} className='container_received'>{todoItem}</div>
+          })}
+        </div>
+       
       </div>
     </div>
       
