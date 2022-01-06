@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .App-logo {
@@ -35,4 +36,29 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.todo_container {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+}
+
+.main_main_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+}
+
+.main_container_received {
+  justify-content: center;
+  width: 60%;
+  height: 100%;
+  opacity: 0.5;
+  border-radius: 15px;
+  background-color: #282c34;
+  color: white;
 }
