@@ -94,12 +94,6 @@
   overflow: auto;
 }
 
-.svg {
-  width: 20px;
-  color: rgb(226, 174, 226);
-  cursor: pointer;
-}
-
 .container_received {
   display: flex;
   align-items: center;
