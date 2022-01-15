@@ -1,7 +1,8 @@
 .App {
   text-align: center;
   height: 100vh;
-  background-color: #F7F8FF;
+  background-color: #3C424A;
+  color: #C3C5C6;
 }
 
 .App-logo {
@@ -48,12 +49,15 @@
 
 .Input {
   margin: 2.5em 2em;
-  width: 30%;
+  width: 60%;
+  height: '20px';
   outline: none;
   border: none;
   padding: 0.7em;
-  border: gray 1px solid;
+  border: black 1px solid;
   border-radius: 5px;
+  background-color: #343A40;
+  color: #C3C5C6;
 }
 
 .button {
@@ -65,46 +69,63 @@
   width: 100px;
   font-size: 0.9rem;
   background-color: #F7F8FF;
-  border: rgb(226, 174, 226) 1.5px solid;
 }
 
 .main_main_container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 50%;
+  align-items: flex-start;
+  height: 63%;
   width: 100%;
 }
 
 .main_container_received {
-  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 70%;
   height: 100%;
   border-radius: 5px;
-  color: rgb(39, 36, 36);
-  align-items: center;
   padding: 25px;
-  background-color: #F7F8FF;
-  border: rgb(226, 174, 226) 1.5px solid;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
 }
 
 .test {
   display: flex;
-  flex-direction: row;
-  height: 100%;
-  overflow: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  height: 6%;
+  width: 100%;
+  color: #C3C5C6;
 }
 
 .container_received {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(36, 31, 31);
-  height: 10%;
+  justify-content: space-between;
+  height: auto;
+  color: #C3C5C6;;
   padding: 5px;
   margin-bottom: 10px;
-  font-size: large;
-  width: 80%;
-  align-items: center;
-  border: rgb(226, 174, 226) 1.5px solid;
+  font-size: 17px;
+  width: 100%;
   border-radius: 5px;
+}
+
+.hr {
+  width: 100%;
+  border: 1.1px #343A40 solid;
 }
