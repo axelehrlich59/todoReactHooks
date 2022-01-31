@@ -90,6 +90,10 @@
   overflow: auto;
 }
 
+.trash-icon {
+  cursor: pointer;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;

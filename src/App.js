@@ -21,7 +21,10 @@ const App = () => {
     }
   }
 
-
+  const deleteTodoItem = (todoIndex) => {
+    const newTodos = todo.filter((_, index) => index !== todoIndex);
+    setTodo(newTodos)
+  }
 
   return (
     <div className="App">
@@ -33,11 +36,11 @@ const App = () => {
     <div className='main_main_container'>
       <div className='main_container_received'>
         <div className='test'>
-          {todo.map((todoItem) => {
+          {todo.map((todoItem, index) => {
             return  <> 
             <div key={todoItem} className='container_received'>
               {todoItem}
-              <FontAwesomeIcon icon={faTrash} />
+              <FontAwesomeIcon icon={faTrash} className='trash-icon' onClick={() => deleteTodoItem(index)} />
             </div> 
               <hr className='hr'></hr>
             </>
