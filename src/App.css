@@ -153,6 +153,14 @@
   transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
 
+.todoItem {
+  cursor: pointer;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
 .hr {
   width: 100%;
   border: 1.1px #343A40 solid;
