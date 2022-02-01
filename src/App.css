@@ -154,7 +154,16 @@
   transition: width 2s, height 2s, background-color 2s, transform 2s;
 }
 
+.containerTodoItem {
+  display: flex;
+  flex: auto;
+  margin-left: 15px;
+  height: 13px
+}
+
 .todoItem {
+  display: flex;
+  align-items: center;
   cursor: pointer;
 }
 

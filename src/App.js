@@ -2,30 +2,9 @@ import { useEffect, useState } from 'react';
 //import {uid} from 'react-uid';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css'
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Task from './Task';
 
 
-const Task = ({
-  todoItem, 
-  index,
-  deleteTodoItem,
-  completeTodo
-}) => {
-  return (
-    <>
-      <div
-          className="container_received"
-          style={{ textDecoration: todoItem.isCompleted ? "line-through" : "" }}
-      >
-        <input className='checkbox' type="checkbox"></input>
-          <div className='todoItem' onClick={() => completeTodo(index)}>{todoItem.text}</div>
-        <FontAwesomeIcon onClick={() => deleteTodoItem(index)} icon={faTrash} className='trash-icon'/>
-      </div>
-      <hr className='hr'></hr>
-    </>
-  );
-}
 
 const App = () => {
 
