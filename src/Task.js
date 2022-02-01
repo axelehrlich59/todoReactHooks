@@ -11,8 +11,8 @@ const Task = ({
   return (
     <>
       <div
-          className="container_received"
-          style={{ textDecoration: todoItem.isCompleted ? "line-through" : "" }}
+        className="containerToDoList"
+        style={{ textDecoration: todoItem.isCompleted ? "line-through" : "" }}
       >
         <input className='checkbox' type="checkbox"></input>
           <div className="containerTodoItem">

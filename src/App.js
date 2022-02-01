@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-//import {uid} from 'react-uid';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css'
 import Task from './Task';
@@ -8,51 +7,65 @@ import Task from './Task';
 
 const App = () => {
 
-  const [value, setValue] = useState('')
-  const [todo, setTodo] = useState([])
+  const [inputValue, setInputValue] = useState('')
+  const [todoList, setTodos] = useState([
+  {
+    text: "Aller faire les courses pour mamie",
+    isCompleted: false
+  },
+  {
+    text: "Tondre le gazon",
+    isCompleted: true
+  },
+  {
+    text: "Rendre visite à mes parents",
+    isCompleted: false
+  },
+])
   const [todoCompleted, setTodoCompleted] = useState(false)
 
   const onChange = (event) => {
     const inputValue = event.target.value
-    setValue(inputValue)
+    setInputValue(inputValue)
 
     const maxCharacters = 80
     if(inputValue.length > maxCharacters) {
       const inputLimited = inputValue.substr(0, maxCharacters)
-      setValue(inputLimited)
+      setInputValue(inputLimited)
     }
   }
 
   const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      const newTodo = [...todo, {text: value, isCompleted: false}]
-      setTodo(newTodo)
-      setValue('')
+    const inputNotEmpty = event.target.value !== ""
+    if (event.key === "Enter" && inputNotEmpty) {
+      const newTodo = [...todoList, {text: inputValue, isCompleted: false}]
+      setTodos(newTodo)
+      setInputValue('')
     }
   }
 
   const completeTodo = (index) => {
-    const newTodo = [...todo]
-    newTodo[index].isCompleted = todoCompleted 
-    setTodoCompleted(!todoCompleted)
-    setTodo(newTodo)
+    const newTodo = [...todoList]
+    let previousCompletedValue = newTodo[index].isCompleted
+    newTodo[index].isCompleted = !previousCompletedValue
+    setTodos(newTodo)
   }
 
   const deleteTodoItem = (index) => {
-    const newTodo = [...todo]
-    newTodo.splice(index, 1)
-    setTodo(newTodo)
+    const todoItemToDelete = [...todoList]
+    todoItemToDelete.splice(index, 1)
+    setTodos(todoItemToDelete)
   } 
 
   return (
     <div className="App">
       <div className='todo_container'>
-        <input placeholder='Enter a todo...' onChange={onChange} onKeyPress={handleKeyPress} value={value} type="text" className='Input'></input>
+        <input placeholder='Enter a todo...' onChange={onChange} onKeyPress={handleKeyPress} value={inputValue} type="text" className='Input'></input>
       </div>
       <div className='main_main_container'>
       <div className='main_container_received'>
         <div className='test'>
-          {todo.map((todoItem, index) => {
+          {todoList.map((todoItem, index) => {
             return ( 
               <> 
                 <Task 

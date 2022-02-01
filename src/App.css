@@ -142,7 +142,7 @@
   color: #C3C5C6;
 }
 
-.container_received {
+.containerToDoList {
   display: flex;
   justify-content: space-between;
   height: auto;
