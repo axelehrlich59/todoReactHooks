@@ -103,12 +103,13 @@
   border-radius: 0.15em;
   transform: translateY(-0.075em);
   border: white 1px solid; 
+  cursor: pointer;
 }
 
 .checkbox:checked {
   content: "";
-  width: 0.75em;
-  height: 0.75em;
+  width: 0.85em;
+  height: 0.85em;
   transform: scale(1.1);
   transition: 120ms transform ease-in-out;
   box-shadow: inset 1em 1em var(--form-control-color);
@@ -157,9 +158,6 @@
   cursor: pointer;
 }
 
-.strike {
-  text-decoration: line-through;
-}
 
 .hr {
   width: 100%;

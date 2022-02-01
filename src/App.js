@@ -18,9 +18,9 @@ const Task = ({
           className="container_received"
           style={{ textDecoration: todoItem.isCompleted ? "line-through" : "" }}
       >
-        <input type="checkbox"></input>
+        <input className='checkbox' type="checkbox"></input>
           <div className='todoItem' onClick={() => completeTodo(index)}>{todoItem.text}</div>
-        <FontAwesomeIcon icon={faTrash} className='trash-icon'/>
+        <FontAwesomeIcon onClick={() => deleteTodoItem(index)} icon={faTrash} className='trash-icon'/>
       </div>
       <hr className='hr'></hr>
     </>
@@ -30,11 +30,7 @@ const Task = ({
 const App = () => {
 
   const [value, setValue] = useState('')
-  const [todo, setTodo] = useState([{
-    text: "Allez-y, essayez !",
-    id: 4,
-    isCompleted: false
-  }])
+  const [todo, setTodo] = useState([])
   const [todoCompleted, setTodoCompleted] = useState(false)
 
   const onChange = (event) => {
@@ -63,30 +59,34 @@ const App = () => {
     setTodo(newTodo)
   }
 
-  const deleteTodoItem = (todoIndex) => {
-    const newTodos = todo.filter((_, index) => index !== todoIndex);
-    setTodo(newTodos)
+  const deleteTodoItem = (index) => {
+    const newTodo = [...todo]
+    newTodo.splice(index, 1)
+    setTodo(newTodo)
   } 
 
   return (
     <div className="App">
       <div className='todo_container'>
-        <input placeholder='Enter a text...' onChange={onChange} onKeyPress={handleKeyPress} value={value} type="text" className='Input'></input>
+        <input placeholder='Enter a todo...' onChange={onChange} onKeyPress={handleKeyPress} value={value} type="text" className='Input'></input>
       </div>
       <div className='main_main_container'>
       <div className='main_container_received'>
         <div className='test'>
           {todo.map((todoItem, index) => {
-            return  <> 
-              <Task 
-                className='task'
-                key={index} 
-                todoItem={todoItem}
-                index={index}
-                completeTodo={completeTodo}
-              >
-              </Task> 
-            </>
+            return ( 
+              <> 
+                <Task 
+                  className='task'
+                  key={index} 
+                  todoItem={todoItem}
+                  index={index}
+                  completeTodo={completeTodo}
+                  deleteTodoItem={deleteTodoItem}
+                >
+                </Task> 
+              </>
+            )
           })}
         </div>
       </div>
