@@ -23,6 +23,7 @@ const App = () => {
   },
 ])
   const [todoCompleted, setTodoCompleted] = useState(false)
+  const [checkedCheckbox, setCheckedCheckbox] = useState([])
 
   const onChange = (event) => {
     const inputValue = event.target.value
@@ -43,6 +44,24 @@ const App = () => {
       setInputValue('')
     }
   }
+
+  const handleCheckbox = (target) => {
+    const isChecked = checkedCheckbox.some(checkedCheckbox => checkedCheckbox.value === target.value)
+    if(isChecked) {
+      setCheckedCheckbox(
+        checkedCheckbox.filter(
+          (checkedCheckbox) => checkedCheckbox.value !== target.value
+        )
+      )
+    } else {
+      setCheckedCheckbox(checkedCheckbox.concat(target))
+    }
+  }
+
+  useEffect(() => {
+    console.log('checkedCheckbox ===== ', checkedCheckbox)
+  }, [checkedCheckbox]);
+  
 
   const completeTodo = (index) => {
     const newTodo = [...todoList]
@@ -75,6 +94,7 @@ const App = () => {
                   index={index}
                   completeTodo={completeTodo}
                   deleteTodoItem={deleteTodoItem}
+                  handleCheckbox={handleCheckbox}
                 >
                 </Task> 
               </>

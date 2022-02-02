@@ -6,7 +6,8 @@ const Task = ({
   todoItem, 
   index,
   deleteTodoItem,
-  completeTodo
+  completeTodo,
+  handleCheckbox
 }) => {
   return (
     <>
@@ -14,7 +15,7 @@ const Task = ({
         className="containerToDoList"
         style={{ textDecoration: todoItem.isCompleted ? "line-through" : "" }}
       >
-        <input className='checkbox' type="checkbox"></input>
+        <input className='checkbox' onChange={handleCheckbox} type="checkbox"></input>
           <div className="containerTodoItem">
             <div className='todoItem' onClick={() => completeTodo(index)}>{todoItem.text}</div>
           </div>
