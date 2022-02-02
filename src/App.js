@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css'
 import Task from './Task';
+import DeleteAllTodo from './DeleteAllTodo';
 
 
 
@@ -11,19 +12,21 @@ const App = () => {
   const [todoList, setTodos] = useState([
   {
     text: "Aller faire les courses pour mamie",
-    isCompleted: false
+    isCompleted: false,
+    todoChecked: false,
   },
   {
     text: "Tondre le gazon",
-    isCompleted: true
+    isCompleted: true,
+    todoChecked: false,
   },
   {
     text: "Rendre visite à mes parents",
-    isCompleted: false
+    isCompleted: false,
+    todoChecked: false,
   },
 ])
   const [todoCompleted, setTodoCompleted] = useState(false)
-  const [checkedCheckbox, setCheckedCheckbox] = useState([])
 
   const onChange = (event) => {
     const inputValue = event.target.value
@@ -39,29 +42,33 @@ const App = () => {
   const handleKeyPress = (event) => {
     const inputNotEmpty = event.target.value !== ""
     if (event.key === "Enter" && inputNotEmpty) {
-      const newTodo = [...todoList, {text: inputValue, isCompleted: false}]
+      const newTodo = [...todoList, {text: inputValue, isCompleted: false, todoChecked: false}]
       setTodos(newTodo)
       setInputValue('')
     }
   }
 
-  const handleCheckbox = (target) => {
-    const isChecked = checkedCheckbox.some(checkedCheckbox => checkedCheckbox.value === target.value)
-    if(isChecked) {
-      setCheckedCheckbox(
-        checkedCheckbox.filter(
-          (checkedCheckbox) => checkedCheckbox.value !== target.value
-        )
-      )
-    } else {
-      setCheckedCheckbox(checkedCheckbox.concat(target))
-    }
+  const handleCheckbox = (index) => {
+    // const newTodo = [...todoList]
+    // let previousCheckedValue = newTodo[index].todoChecked;
+    // newTodo[index].todoChecked = !previousCheckedValue;
+    // setTodos(newTodo)
+    const newTodo = [...todoList]
+    let previousCheckedValue = newTodo[index].todoChecked;
+    newTodo[index].todoChecked = !previousCheckedValue;
+    setTodos(newTodo)
+  }
+  
+  
+  const deleteCheckedTodos = () => {
+    setTodos(todoList.filter((filteredTodo) => filteredTodo.todoChecked !== true))
   }
 
   useEffect(() => {
-    console.log('checkedCheckbox ===== ', checkedCheckbox)
-  }, [checkedCheckbox]);
+    console.log('todoList ===== ', todoList)
+  }, [todoList]);
   
+
 
   const completeTodo = (index) => {
     const newTodo = [...todoList]
@@ -75,6 +82,8 @@ const App = () => {
     todoItemToDelete.splice(index, 1)
     setTodos(todoItemToDelete)
   } 
+  
+  
 
   return (
     <div className="App">
@@ -84,6 +93,9 @@ const App = () => {
       <div className='main_main_container'>
       <div className='main_container_received'>
         <div className='test'>
+          {<DeleteAllTodo 
+              deleteCheckedTodos={deleteCheckedTodos}
+            />}
           {todoList.map((todoItem, index) => {
             return ( 
               <> 

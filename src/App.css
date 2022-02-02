@@ -172,3 +172,7 @@
   width: 100%;
   border: 1.1px #343A40 solid;
 }
+
+.buttonDeleteTodos {
+  margin-bottom: 25px;
+}
