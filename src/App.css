@@ -141,15 +141,20 @@
   width: 100%;
   color: #C3C5C6;
 }
-
-.containerTabs {
-  width: 10%;
-  cursor: pointer;
-  margin-bottom: 20px;
+.containerAllTabs {
+  display: flex;
+  justify-content: space-between;
+  width: 22%;
 }
 
-.Tabs {
+.containerTabsActive {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
 
+.containerTabsArchived {
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .hrTab {
