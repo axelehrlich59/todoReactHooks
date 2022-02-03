@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css'
-import Task from './Task';
-import DeleteAllTodo from './DeleteAllTodo';
+import Tabs from './Tabs';
 
 
 
@@ -26,7 +25,8 @@ const App = () => {
     todoChecked: false,
   },
 ])
-  const [showDeleteCheckedTodoButton, setShowDeleteCheckedTodoButton] = useState(false)
+  const [showDeleteCheckedTodoButton, setShowDeleteCheckedTodoButton] = useState(true)
+  const [activeTodosTab, setActiveTodosTab] = useState(true)
 
   const onChange = (event) => {
     const inputValue = event.target.value
@@ -86,25 +86,14 @@ const App = () => {
       <div className='main_main_container'>
       <div className='main_container_received'>
         <div className='test'>
-          {showDeleteCheckedTodoButton && <DeleteAllTodo 
-              deleteCheckedTodos={deleteCheckedTodos}
-            />}
-          {todoList.map((todoItem, index) => {
-            return ( 
-              <> 
-                <Task 
-                  className='task'
-                  key={index} 
-                  todoItem={todoItem}
-                  index={index}
-                  completeTodo={completeTodo}
-                  deleteTodoItem={deleteTodoItem}
-                  handleCheckbox={handleCheckbox}
-                >
-                </Task> 
-              </>
-            )
-          })}
+        {activeTodosTab && <Tabs 
+          todoList={todoList}
+          handleCheckbox={handleCheckbox} 
+          deleteCheckedTodos={deleteCheckedTodos} 
+          completeTodo={completeTodo} 
+          deleteTodoItem={deleteTodoItem} 
+          showDeleteCheckedTodoButton={showDeleteCheckedTodoButton}
+        />}
         </div>
       </div>
     </div>
