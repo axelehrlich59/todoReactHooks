@@ -26,7 +26,7 @@ const App = () => {
     todoChecked: false,
   },
 ])
-  const [todoCompleted, setTodoCompleted] = useState(false)
+  const [showDeleteCheckedTodoButton, setShowDeleteCheckedTodoButton] = useState(false)
 
   const onChange = (event) => {
     const inputValue = event.target.value
@@ -49,27 +49,19 @@ const App = () => {
   }
 
   const handleCheckbox = (index) => {
-    // const newTodo = [...todoList]
-    // let previousCheckedValue = newTodo[index].todoChecked;
-    // newTodo[index].todoChecked = !previousCheckedValue;
-    // setTodos(newTodo)
     const newTodo = [...todoList]
     let previousCheckedValue = newTodo[index].todoChecked;
     newTodo[index].todoChecked = !previousCheckedValue;
     setTodos(newTodo)
+    setShowDeleteCheckedTodoButton(true)
   }
   
   
   const deleteCheckedTodos = () => {
     setTodos(todoList.filter((filteredTodo) => filteredTodo.todoChecked !== true))
+    setShowDeleteCheckedTodoButton(false)
   }
-
-  useEffect(() => {
-    console.log('todoCompleted ===== ', todoCompleted)
-  }, [todoCompleted]);
   
-  
-
 
   const completeTodo = (index) => {
     const newTodo = [...todoList]
@@ -94,7 +86,7 @@ const App = () => {
       <div className='main_main_container'>
       <div className='main_container_received'>
         <div className='test'>
-          {<DeleteAllTodo 
+          {showDeleteCheckedTodoButton && <DeleteAllTodo 
               deleteCheckedTodos={deleteCheckedTodos}
             />}
           {todoList.map((todoItem, index) => {
