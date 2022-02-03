@@ -15,7 +15,7 @@ const Task = ({
         className="containerToDoList"
         style={{ textDecoration: todoItem.isCompleted ? "line-through" : "" }}
       >
-        <input className='checkbox' onClick={() => handleCheckbox(index)} type="checkbox"></input>
+        <input className='checkbox' onClick={() => handleCheckbox(index)} checked={todoItem.todoChecked} type="checkbox"></input>
           <div className="containerTodoItem">
             <div className='todoItem' onClick={() => completeTodo(index)}>{todoItem.text}</div>
           </div>

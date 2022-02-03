@@ -65,8 +65,9 @@ const App = () => {
   }
 
   useEffect(() => {
-    console.log('todoList ===== ', todoList)
-  }, [todoList]);
+    console.log('todoCompleted ===== ', todoCompleted)
+  }, [todoCompleted]);
+  
   
 
 
