@@ -16,13 +16,11 @@ const Tabs = ({
     <>
     <div className="containerAllTabs">
       <div className="containerTabsActive">
-        <div className="Tabs">Active todos</div>
-        <hr className='hrTab'></hr>
+        <button className="buttonDeleteTodos">Active todos</button>
       </div>
       
       <div className="containerTabsArchived">
-        <div className="Tabs">Archived todos</div>
-        <hr className='hrTab'></hr>
+        <button className="buttonDeleteTodos">Archived todos</button>
       </div>
     </div>
 

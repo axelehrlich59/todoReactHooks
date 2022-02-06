@@ -25,7 +25,7 @@ const App = () => {
     todoChecked: false,
   },
 ])
-  const [showDeleteCheckedTodoButton, setShowDeleteCheckedTodoButton] = useState(true)
+  const [showDeleteCheckedTodoButton, setShowDeleteCheckedTodoButton] = useState(false)
   const [activeTodosTab, setActiveTodosTab] = useState(true)
 
   const onChange = (event) => {
